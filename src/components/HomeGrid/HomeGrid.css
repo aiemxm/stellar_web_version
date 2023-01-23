@@ -1,0 +1,60 @@
+.gallery {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vmin;
+    padding: 0 14px;
+}
+
+.gallery li {
+    list-style-type: none;
+    height: 250px;
+    flex-grow: 1;
+    position: relative;
+}
+
+.picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.picture-title {
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+    color: antiquewhite;
+
+}
+
+.card-hover {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: greenyellow;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+}
+.gallery li:hover .card-hover {
+    display: inline-block;
+}
+
+.gallery li .card-hover p {
+    background: red;
+    /*position: absolute;*/
+    top: 10px;
+    left: 0;
+}
+
+.show-more {
+    /*position: absolute;*/
+    /*display: inline-block;*/
+    width: 10vmin;
+}
+
+.picture-text-div {
+    display: flex;
+    /*flex-direction: column;*/
+}
