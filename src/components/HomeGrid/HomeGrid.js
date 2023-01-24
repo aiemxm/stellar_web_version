@@ -2,13 +2,12 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {DayPictureTile} from "../DayPictureTile/DayPictureTile";
 import './HomeGrid.css';
-
+import {logDOM} from "@testing-library/react";
 export default function HomeGrid() {
-    // let apiData = new DAO();
     let aMonthAgo = setDateFormat(getDateForWeeksAgo(new Date()))
     let today = setDateFormat(new Date())
     const [data, setData] = useState([]);
-    let url = `https://api.nasa.gov/planetary/apod?api_key=Vv8c1bsJK7bHuIDRy3VD9agAoKs337WJA1zQP5k1&start_date=${aMonthAgo}&end_date=${today}`;
+    let url = `https://apod.ellanan.com/api?start_date=${aMonthAgo}&end_date=${today}`;
 
     // GET RIGHT DATE FORMAT
     function setDateFormat(date = new Date()) {
@@ -37,11 +36,11 @@ export default function HomeGrid() {
 
 
     return (
-        <ul className="gallery">
-            {data.map(item => (
-                <DayPictureTile key={item.date} title={item.title} img={item.url} text={item.explanation} date={item.date}/>
-            ))}
-        </ul>
+            <ul className="gallery">
+                {data.map(item => (
+                    <DayPictureTile obj={item} key={item.date} title={item.title} img={item.hdurl} text={item.explanation} date={item.date}/>
+                ))}
+            </ul>
     );
 };
 

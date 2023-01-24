@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2vmin;
-    padding: 0 14px;
+    padding: 0 0 50px;
 }
 
 .gallery li {
@@ -18,43 +18,57 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 .picture-title {
+    width: 100%;
     position: absolute;
-    bottom: 10px;
-    left: 5px;
+    display: inline-block;
+    bottom: 3px;
+    left: 0;
+    padding: 15px;
     color: antiquewhite;
-
+    cursor: pointer;
+    transition: scale 0.3s ease-in;
+    scale: 1;
 }
+
+
+.picture-title:hover, .picture-title:focus {
+    transition: scale 0.3s ease-out;
+    scale: 1.05;
+}
+
 
 .card-hover {
     display: none;
     width: 100%;
     height: 100%;
-    background: greenyellow;
     position: absolute;
     z-index: 10;
     left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+
 }
+
 .gallery li:hover .card-hover {
     display: inline-block;
 }
 
-.gallery li .card-hover p {
-    background: red;
-    /*position: absolute;*/
-    top: 10px;
-    left: 0;
+
+.test {
+    color: blue;
+    text-decoration: none;
+
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
 }
 
-.show-more {
-    /*position: absolute;*/
-    /*display: inline-block;*/
-    width: 10vmin;
-}
-
-.picture-text-div {
-    display: flex;
-    /*flex-direction: column;*/
+.test:hover, .test:focus {
+    background-size: 100% 2px;
 }

@@ -7,8 +7,7 @@ export const DayPictureTile = props => {
     return (
         <li>
             <img className="picture" src={props.img}/>
-            <CardHover title={props.title} text={props.text}/>
-
+            <CardHover obj={props.obj} title={props.title} date={props.date} text={props.text}/>
         </li>
     );
 };
