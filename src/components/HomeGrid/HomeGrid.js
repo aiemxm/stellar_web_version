@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {DayPictureTile} from "../DayPictureTile/DayPictureTile";
 import './HomeGrid.css';
-import { Skeleton} from "@mui/material";
+import {Skeleton} from "@mui/material";
 
 export default function HomeGrid() {
     let aMonthAgo = setDateFormat(getDateForWeeksAgo(new Date()))

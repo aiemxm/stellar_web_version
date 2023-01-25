@@ -36,8 +36,7 @@
 
 
 .picture-title:hover, .picture-title:focus {
-    transition: scale 0.3s ease-out;
-    scale: 1.05;
+    text-decoration: underline;
 }
 
 
@@ -58,17 +57,3 @@
 }
 
 
-.test {
-    color: blue;
-    text-decoration: none;
-
-    background-image: linear-gradient(currentColor, currentColor);
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: 0% 2px;
-    transition: background-size .3s;
-}
-
-.test:hover, .test:focus {
-    background-size: 100% 2px;
-}
