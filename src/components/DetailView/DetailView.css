@@ -22,8 +22,9 @@
 
 .detail-title-div {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
     border-bottom: 1px solid black;
 }
 

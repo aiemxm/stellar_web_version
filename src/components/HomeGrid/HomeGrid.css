@@ -1,5 +1,5 @@
 .gallery {
-    max-width: 1300px;
+    max-width: 1500px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -9,7 +9,7 @@
 
 .gallery li {
     list-style-type: none;
-    height: 250px;
+    height: 300px;
     flex-grow: 1;
     position: relative;
 }
