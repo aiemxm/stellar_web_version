@@ -4,31 +4,25 @@ import axios from "axios";
 import "./DetailView.css"
 import CloudDownloadOutlinedIcon from '@mui/icons-material/CloudDownloadOutlined';
 import {Paper, Skeleton} from "@mui/material";
-import {saveAs} from 'file-saver';
 
 const DetailView = () => {
     const [data, setData] = useState({})
     const [isLoading, setIsLoading] = useState(false)
     const location = useLocation()
-    // const url = `https://apod.ellanan.com/api?date=${location.state}`
-    let url = `https://api.nasa.gov/planetary/apod?api_key=Vv8c1bsJK7bHuIDRy3VD9agAoKs337WJA1zQP5k1&date=${location.state}`;
+    const url = `https://apod.ellanan.com/api?date=${location.state}`
 
     const fetchData = async () => {
         await axios.get(url).then(res => {
             setData(res.data)
             setIsLoading(true)
+            document.querySelector('body').style.backgroundImage = res.data.url
         });
     };
-
-    const downloadImage = () => {
-        let imgUrl = data.url
-        console.log(imgUrl)
-        saveAs(imgUrl, `${data.url}`)
-    }
 
 
     useEffect(() => {
         fetchData();
+
     }, []);
 
     return (
@@ -78,49 +72,28 @@ const DetailView = () => {
         // </div>
 
 
-        <div id="container">
 
-            <div className="product-details">
-
-                <h1>{data.title}</h1>
-                <CloudDownloadOutlinedIcon onClick={downloadImage}/>
-                <span className="hint-star star">
-		<i className="fa fa-star" aria-hidden="true"></i>
-		<i className="fa fa-star" aria-hidden="true"></i>
-		<i className="fa fa-star" aria-hidden="true"></i>
-		<i className="fa fa-star" aria-hidden="true"></i>
-		<i className="fa fa-star-o" aria-hidden="true"></i>
-	</span>
-
-                <p className="information">{data.explanation}</p>
-
-
+            <div className="card">
+                {
+                    (isLoading)
+                    ? <figure className="card__thumb">
+                        <img src={data.hdurl} alt={data.title}
+                             className="card__image"/>
+                        <figcaption className="card__caption">
+                            <h2 className="card__title">{data.title}</h2>
+                            <p className="card__snippet">{data.explanation}</p>
+                        </figcaption>
+                    </figure>
+                    : <Skeleton
+                        variant="rectangular"
+                        width={1100}
+                        height={500}
+                        sx={{ bgcolor: 'grey.700' }}
+                    />
+                }
             </div>
 
-            <div className="product-image">
-
-                <img
-                    src={data.hdurl}
-                    alt=""
-                />
-
-
-                <div className="info">
-                    <h2>More info</h2>
-                    <ul>
-                        <li>Date: {data.date}</li>
-                        {
-                            (data.copyright != null)
-                                ? <li>Copyright: {data.copyright}</li>
-                                : ''
-                        }
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-    );
+);
 };
 
 export default DetailView;

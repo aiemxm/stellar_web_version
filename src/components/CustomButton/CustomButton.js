@@ -1,15 +1,8 @@
 import React from 'react';
-import styled from "styled-components";
-import {render} from "react-dom";
+import "./CustomButton.css"
 
-const CustomButton = (props) => {
+const CustomButton = props => <a onClick={props.click} className="btn" href="javascript:void(0)"><span>Menu</span><div className="wave"></div>
+</a>
 
-    const CustomButton = styled.button`
-        color: red;
-    `
-    render(
-        <CustomButton onClick={props.showMore}/>
-    );
-};
 
 export default CustomButton;
