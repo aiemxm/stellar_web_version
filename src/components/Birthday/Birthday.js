@@ -1,14 +1,66 @@
-import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 export const Birthday = props => {
-    return (
-        <>
-            <h1>Entre ta date d'anniversaire !</h1>
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam amet aspernatur, consectetur cupiditate dolore dolorem doloremque eligendi et ex facere fugit, impedit ipsa itaque laborum natus nesciunt nulla praesentium quae quos ratione tempore tenetur, veniam voluptate voluptates. Alias consequuntur delectus dolor dolores ducimus et excepturi, expedita facere fugiat in magnam minima nesciunt officiis perspiciatis quis quisquam quo quos sequi tempora unde? Cumque deleniti <a
-    href="" className="test">test de sa pute de merde</a> et inventore, iste laudantium modi natus non obcaecati? Animi, assumenda atque deleniti ea eligendi enim est eum id iusto mollitia omnis qui sequi suscipit vero voluptate? Aperiam at dolores facilis nihil saepe sapiente sequi veritatis voluptas!
-</p>
 
-        </>
+    const url = `https://apod.ellanan.com/api?date=`;
+
+    const [birthdayData, setBirthdayData] = useState({});
+    const [initialDate, setInitialDate] = useState('')
+    const [updatedDate, setUpdatedDate] = useState(initialDate)
+    const birthdayInput = document.getElementById('birthdayInput');
+
+
+    const handleInput = (event) => {
+        setInitialDate(event.target.value);
+        console.log(initialDate)
+    }
+
+    const handleClick = () => {
+        if (initialDate.length === 10) {
+            setUpdatedDate(initialDate);
+        }
+        // fetchData(updatedDate);
+        console.log(updatedDate)
+    }
+    const fetchData = async (date) => {
+        await fetch(url + date)
+            .then(res => {
+                res.json()
+            })
+            .then(data => setBirthdayData(data))
+
+        console.log(birthdayData)
+    }
+
+    function test () {
+        console.log(birthdayInput)
+    }
+
+    useEffect(() => {
+
+        console.log(document.getElementById("birthdayInput").value)
+    }, []);
+
+
+    return (
+        <div>
+            <h1>Enter your date of birth</h1>
+            <input
+                className="birthdayInput"
+                type="date"
+                id="birthdayInput"
+                onChange={handleInput}
+                value="2022-01-02"
+            />
+            <button
+                type="button"
+                onClick={() => console.log(updatedDate)}
+            >
+                Search
+            </button>
+
+            <h3>{birthdayData.title}</h3>
+            <img src={birthdayData.url} alt=""/>
+        </div>
     );
 };

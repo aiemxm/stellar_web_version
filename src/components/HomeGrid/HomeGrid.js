@@ -3,12 +3,13 @@ import axios from "axios";
 import {DayPictureTile} from "../DayPictureTile/DayPictureTile";
 import './HomeGrid.css';
 import {Skeleton} from "@mui/material";
+import DAO from "../../services/DAO";
 
 export default function HomeGrid() {
     let aMonthAgo = setDateFormat(getDateForWeeksAgo(new Date()))
     let today = setDateFormat(new Date())
     const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(false)
     let url = `https://apod.ellanan.com/api?start_date=${aMonthAgo}&end_date=${today}`;
 
     // GET RIGHT DATE FORMAT
@@ -29,7 +30,7 @@ export default function HomeGrid() {
     const fetchData = async () => {
         await axios.get(url).then(res => {
             setData(res.data.reverse());
-            setIsLoading(true);
+            setIsLoaded(true);
         })
     };
 
@@ -42,7 +43,7 @@ export default function HomeGrid() {
         <ul className="gallery">
             {data.map(item => (
 
-                (isLoading)
+                (isLoaded)
                     ? <DayPictureTile
                         obj={item}
                         key={item.date}

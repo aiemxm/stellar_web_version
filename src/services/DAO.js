@@ -21,21 +21,27 @@ class DAO {
         let aMonthAgo = this.setDateFormat(this.getDateForWeeksAgo(new Date()))
         let today = this.setDateFormat(new Date())
         let url = `https://apod.ellanan.com/api?start_date=${aMonthAgo}&end_date=${today}`;
-        let oneDay = new DayData();
+        let oneDay;
         let oneMonth = [];
         await fetch(url)
-            .then(res => res.json())
+            .then(res => {
+                res.json()
+                 oneDay = new DayData(res.data);
+
+            })
             .then(data => {
-                data.map(day => {
+                data.forEach(day => {
                     oneDay.url = day.url;
                     oneDay.date = day.date;
                     oneDay.hdurl = day.hdurl;
                     oneDay.title = day.title;
                     oneDay.explanation = day.explanation;
                     oneMonth.push(oneDay)
+                    console.log(data)
                 })
             })
 
+        console.log("je rentre dans la fonction dans la DAO")
         return oneMonth;
     }
 
@@ -56,3 +62,5 @@ class DAO {
         return oneDay;
     }
 }
+
+export default DAO
