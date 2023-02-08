@@ -32,7 +32,7 @@ export const Birthday = props => {
         console.log(birthdayData)
     }
 
-    function test () {
+    function test() {
         console.log(birthdayInput)
     }
 

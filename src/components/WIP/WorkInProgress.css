@@ -1,0 +1,10 @@
+.inProgress {
+    height: 100%;
+    width: 100%;
+    /*background: url("launch.jpg");*/
+}
+
+.wip-title {
+    position: absolute;
+    font-size: 50px;
+}

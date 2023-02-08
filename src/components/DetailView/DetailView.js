@@ -78,29 +78,24 @@ const DetailView = () => {
         //     }
         // </div>
 
+        <div className="detail-container">
 
-        (window.innerWidth > 1000)
-
-            ? <div className="card">
-                {
-                    (isLoading)
-                        ? <figure className="card__thumb">
-                            <img src={data.hdurl} alt={data.title}
-                                 className="card__image"/>
-                            <figcaption className="card__caption">
-                                <h2 className="card__title">{data.title}</h2>
-                                <p className="card__snippet">{data.explanation}</p>
-                            </figcaption>
-                        </figure>
-                        : <Skeleton
-                            variant="rectangular"
-                            width={1100}
-                            height={500}
-                            sx={{bgcolor: 'grey.700'}}
-                        />
-                }
+            <div className="detail-main">
+                <h1 className="detail-title">{data.title}</h1>
+                <img src={data.hdurl} className="detail-img" alt=""/>
+                <p className="detail-explanation-desktop">
+                    {data.explanation}
+                </p>
+            <p className="detail-copyright">
+                {(data.copyright != null) ? `© ${data.copyright}` : ''}
+            </p>
+            <div className="detail-explanation-mobile">
+                <p>{data.explanation}</p>
             </div>
-            : <h2>Trop petit</h2>
+            </div>
+
+        </div>
+
 
     );
 };
