@@ -1,16 +1,26 @@
 import React from 'react';
 import './WorkInProgress.css'
+import launch from './launch.jpg';
+import {Skeleton} from "@mui/material";
 
-const MyComponent = () => {
+const WorkInProgress = () => {
     return (
-        <div className="inProgress">
-            <h1 className="wip-title">
-                Page coming soon ...
-            </h1>
+        <div className="wip-container">
 
-            <img src="launch.jpg" alt="" className="classname"/>
+            <div className="wip-main">
+
+
+                <h1 className="wip-title">Coming soon</h1>
+
+
+                <img src={launch} className="wip-img" alt="page coming soon"/>
+
+
+            </div>
+
         </div>
+
     );
 };
 
-export default MyComponent;
+export default WorkInProgress;
