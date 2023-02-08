@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {matchRoutes, useLocation} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import axios from "axios";
 import "./DetailView.css"
-import CloudDownloadOutlinedIcon from '@mui/icons-material/CloudDownloadOutlined';
-import {Paper, Skeleton} from "@mui/material";
+import {Skeleton} from "@mui/material";
 
 const DetailView = () => {
     const [data, setData] = useState({})
@@ -28,7 +27,6 @@ const DetailView = () => {
         return () => {
             window.removeEventListener("resize", changeWidth);
         };
-        console.log(window.innerWidth)
 
     }, []);
 
@@ -81,17 +79,50 @@ const DetailView = () => {
         <div className="detail-container">
 
             <div className="detail-main">
-                <h1 className="detail-title">{data.title}</h1>
-                <img src={data.hdurl} className="detail-img" alt=""/>
-                <p className="detail-explanation-desktop">
-                    {data.explanation}
-                </p>
-            <p className="detail-copyright">
-                {(data.copyright != null) ? `© ${data.copyright}` : ''}
-            </p>
-            <div className="detail-explanation-mobile">
-                <p>{data.explanation}</p>
-            </div>
+
+
+                {
+                    (isLoading)
+                        ? <h1 className="detail-title">{data.title}</h1>
+                        : <Skeleton className="detail-title"/>
+
+                }
+
+                {
+                    (isLoading)
+                        ? <img src={data.hdurl} className="detail-img" alt={data.title}/>
+                        : <Skeleton className="detail-img" width={1000} height={600}/>
+                }
+
+                {
+                    (isLoading)
+
+                        ? <p className="detail-explanation-desktop">
+                            {data.explanation}
+                        </p>
+                        : <Skeleton className="detail-explanation-desktop" height={400}/>
+                }
+
+
+                {
+                    (isLoading)
+
+                        ? <p className="detail-copyright">
+                            {(data.copyright != null) ? `© ${data.copyright}` : ''}
+                        </p>
+
+                        : <Skeleton className="detail-copyright" width={300}/>
+
+                }
+
+                {
+                    (isLoading)
+                 ? <div className="detail-explanation-mobile">
+                    <p>{data.explanation}</p>
+                </div>
+                   : <Skeleton className="detail-explanation-mobile" height={300}/>
+
+                }
             </div>
 
         </div>
