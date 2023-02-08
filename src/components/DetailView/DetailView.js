@@ -55,7 +55,10 @@ const DetailView = () => {
                         ? <p className="detail-explanation-desktop">
                             {data.explanation}
                         </p>
-                        : <Skeleton className="detail-explanation-desktop" height={400}/>
+                        : (window.innerWidth > 1900)
+
+                            ? <Skeleton className="detail-explanation-desktop" height={400}/>
+                            : ""
                 }
 
 
@@ -76,8 +79,10 @@ const DetailView = () => {
                         ? <div className="detail-explanation-mobile">
                             <p>{data.explanation}</p>
                         </div>
-                        : <Skeleton className="detail-explanation-mobile" height={300}/>
+                        : (window.innerWidth < 1900)
 
+                            ? <Skeleton className="detail-explanation-mobile" height={300}/>
+                            : ""
                 }
             </div>
 
