@@ -9,7 +9,7 @@ input {
 }
 
 .btn-toggle {
-    position: fixed;
+    position: absolute;
     top: 32px;
     left: 180px;
     text-align: center;

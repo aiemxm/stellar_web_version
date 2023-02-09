@@ -33,20 +33,21 @@ const DetailView = () => {
     return (
         <div className="detail-container">
 
+            //todo: put all skeleton in divs to position correctly
+            //todo: create custom component
             <div className="detail-main">
-
 
                 {
                     (isLoaded)
                         ? <h1 className="detail-title">{data.title}</h1>
-                        : <Skeleton className="detail-title"/>
+                        : <Skeleton className="detail-title" sx={{ bgcolor: 'rgba(23,96,135,0.27)' }}/>
 
                 }
 
                 {
                     (isLoaded)
                         ? <img src={data.hdurl} className="detail-img" alt={data.title}/>
-                        : <Skeleton className="detail-img" width={1000} height={900}/>
+                        : <Skeleton className="detail-img" width={1000} height={900} sx={{ bgcolor: 'rgba(23,96,135,0.27)' }} />
                 }
 
                 {
@@ -57,7 +58,9 @@ const DetailView = () => {
                                 {(data.copyright) ? `© ${data.copyright}` : ''}
                             </p>
                             : ""
-                        : <Skeleton className="detail-copyright" width={300}/>
+                        : <div style={{ position: "absolute", top: "50px", right: "100px" }}>
+                            <Skeleton className="detail-copyright" width={300} sx={{  marginTop: "150px", bgcolor: 'rgba(23,96,135,0.27)' }}/>
+                        </div>
                 }
 
                 {
@@ -66,7 +69,7 @@ const DetailView = () => {
                             <p>{data.explanation}</p>
                         </div>
 
-                        : <Skeleton className="detail-explanation-mobile" height={300}/>
+                        : <Skeleton className="detail-explanation-mobile" height={300} sx={{ bgcolor: 'rgba(23,96,135,0.27)' }}/>
                 }
             </div>
 
