@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Navbar.css";
 import {NavLink} from "react-router-dom";
 import {useState, useEffect} from "react";
+import {ThemeContext} from "../../Context/ThemeContext";
 
 function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
+    const {theme} = useContext(ThemeContext)
     const toggleNav = () => {
         setToggleMenu(!toggleMenu);
         document.querySelector(".hamburger").classList.toggle("open");
@@ -13,8 +15,21 @@ function Navbar() {
     const currentTab = (isActive) => {
         return isActive
             ? {color: "#4473CF", fontWeight: "bold", fontSize: "19px"}
-            : {color: "black"};
+            : {color: (theme) ? "#f6f6f6" :"black"};
     };
+
+    const navTheme = (theme) => {
+        return theme
+            ? { background: "#222" }
+            : { background: "white" };
+    }
+
+    const hamburgerTheme = (theme) => {
+        return theme
+            ? {  border: "1px solid white"}
+            : {  border: "1px solid black"}
+
+    }
     useEffect(() => {
         const changeWidth = () => setWidth(window.innerWidth);
         window.addEventListener("resize", changeWidth);
@@ -25,7 +40,7 @@ function Navbar() {
     }, []);
 
     return (
-        <nav>
+        <nav style={navTheme(theme)}>
             <h1>Stellar</h1>
             {(toggleMenu || width > 600) && (
                 <div className="navlinks-container">
@@ -52,9 +67,9 @@ function Navbar() {
 
             <div className="main-navlinks">
                 <div className="hamburger" onClick={toggleNav} aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span style={hamburgerTheme(theme)}></span>
+                    <span style={hamburgerTheme(theme)}></span>
+                    <span style={hamburgerTheme(theme)}></span>
                 </div>
             </div>
 

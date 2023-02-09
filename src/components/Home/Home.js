@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import './Home.css';
 import HomeGrid from "../HomeGrid/HomeGrid";
+import {ThemeContext} from "../../Context/ThemeContext";
 
 export function Home() {
+
+    const {theme} = useContext(ThemeContext);
     return (
         <div>
             <h1 className="home-title">Welcome to Stellar</h1>
@@ -11,3 +14,4 @@ export function Home() {
     );
 }
 
+//todo: mettre ce dossier dans un dossier 'pages'

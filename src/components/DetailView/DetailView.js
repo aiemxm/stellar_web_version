@@ -46,7 +46,7 @@ const DetailView = () => {
                 {
                     (isLoaded)
                         ? <img src={data.hdurl} className="detail-img" alt={data.title}/>
-                        : <Skeleton className="detail-img" width={1000} height={900} marginTop={100}/>
+                        : <Skeleton className="detail-img" width={1000} height={900}/>
                 }
 
                 {
@@ -58,7 +58,6 @@ const DetailView = () => {
                             </p>
                             : ""
                         : <Skeleton className="detail-copyright" width={300}/>
-
                 }
 
                 {
