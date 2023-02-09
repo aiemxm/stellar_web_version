@@ -46,21 +46,8 @@ const DetailView = () => {
                 {
                     (isLoaded)
                         ? <img src={data.hdurl} className="detail-img" alt={data.title}/>
-                        : <Skeleton className="detail-img" width={1000} height={600}/>
+                        : <Skeleton className="detail-img" width={1000} height={900} marginTop={100}/>
                 }
-
-                {
-                    (isLoaded)
-
-                        ? <p className="detail-explanation-desktop">
-                            {data.explanation}
-                        </p>
-                        : (window.innerWidth > 1900)
-
-                            ? <Skeleton className="detail-explanation-desktop" height={400}/>
-                            : ""
-                }
-
 
                 {
                     (isLoaded)
@@ -79,10 +66,8 @@ const DetailView = () => {
                         ? <div className="detail-explanation-mobile">
                             <p>{data.explanation}</p>
                         </div>
-                        : (window.innerWidth < 1900)
 
-                            ? <Skeleton className="detail-explanation-mobile" height={300}/>
-                            : ""
+                        : <Skeleton className="detail-explanation-mobile" height={300}/>
                 }
             </div>
 

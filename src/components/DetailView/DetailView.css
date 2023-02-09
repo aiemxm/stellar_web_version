@@ -6,7 +6,7 @@
 .detail-main {
     max-width: 1000px;
     height: 600px;
-    margin-left: auto;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -15,14 +15,15 @@
     font-weight: bolder;
     width: 500px;
     position: absolute;
-    bottom: -80px;
-    left: -300px;
+    bottom: 0;
+    left: -20px;
     padding: 40px;
     line-height: 1.7;
     letter-spacing: 2px;
-    background: rgba(68, 115, 207, 0.95);
+    box-shadow: 0 0 10px rgba(0,0,0, 0.4);
+    backdrop-filter: blur(20px);
     color: #f6f6f6;
-    border-radius: 2px;
+    border-radius: 8px;
 }
 
 .detail-explanation-desktop {
@@ -34,14 +35,16 @@
     padding: 20px;
     line-height: 1.4;
     letter-spacing: 2px;
-    background: rgba(68, 115, 207, 0.95);
+    box-shadow: 0 0 10px rgba(0,0,0, 0.4);
+    backdrop-filter: blur(20px);
     color: #f6f6f6;
     border-radius: 2px;
     margin-bottom: 20px;
 }
 
 .detail-explanation-mobile {
-    display: none;
+    font-size: 20px;
+    text-align: justify;
 }
 
 .detail-img {
@@ -58,7 +61,8 @@
     padding: 20px;
     line-height: 1.3;
     letter-spacing: 2px;
-    background: rgba(68, 115, 207, 0.95);
+    box-shadow: 0 0 10px rgba(0,0,0, 0.4);
+    backdrop-filter: blur(20px);
     color: #f6f6f6;
     border-radius: 2px;
 }
@@ -74,7 +78,7 @@
     }
 
     .detail-copyright {
-        right: 0;
+        right: 10px;
     }
     .detail-img {
         width: 92%;
@@ -108,7 +112,6 @@
 
     .detail-copyright {
         right: 0;
-        top: 96%;
         font-size: 10px;
         background: none;
         height: 20px;
