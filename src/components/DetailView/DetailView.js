@@ -3,13 +3,17 @@ import {useLocation} from "react-router-dom";
 import axios from "axios";
 import "./DetailView.css"
 import {Skeleton} from "@mui/material";
+import UseSetUrl from "../../hooks/UseSetUrl";
 
 const DetailView = () => {
     const [data, setData] = useState({})
     const [isLoaded, setIsLoaded] = useState(false)
     const [width, setWidth] = useState(window.innerWidth);
+
+
+
     const location = useLocation()
-    const url = `https://apod.ellanan.com/api?date=${location.state}`;
+    const url = UseSetUrl(location.state);
 
     const fetchData = async () => {
         await axios.get(url).then(res => {

@@ -8,7 +8,6 @@ export default function HomeGrid() {
     return (
         <ul className="gallery">
             {newApiCall.map(item => (
-
                 <DayPictureTile
                     obj={item}
                     key={item.date}

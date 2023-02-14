@@ -1,12 +1,13 @@
 import {useEffect, useState} from 'react';
+import UseSetUrl from "./UseSetUrl";
 
 export default function UseNasaOneMonth() {
 
     const [data, setData] = useState([]);
-
+    const [isLoaded, setIsLoaded] = useState(false)
     let today = setDateFormat(new Date())
     let aMonthAgo = setDateFormat(getDateForWeeksAgo(new Date()))
-    let url = `https://apod.ellanan.com/api?start_date=${aMonthAgo}&end_date=${today}`;
+    let url = UseSetUrl(aMonthAgo, today);
 
 
     function setDateFormat(date = new Date()) {
@@ -26,11 +27,11 @@ export default function UseNasaOneMonth() {
         await fetch(url)
             .then(res => res.json())
             .then(array => setData(array))
-            .then(() => console.log(data))
     }
 
     useEffect(() => {
         fetchData();
+        setIsLoaded(true);
     }, [])
 
 
