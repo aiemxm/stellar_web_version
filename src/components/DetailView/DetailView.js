@@ -33,8 +33,8 @@ const DetailView = () => {
     return (
         <div className="detail-container">
 
-            //todo: put all skeleton in divs to position correctly
-            //todo: create custom component
+            {/*//todo: put all skeleton in divs to position correctly*/}
+            {/*//todo: create custom component*/}
             <div className="detail-main">
 
                 {
