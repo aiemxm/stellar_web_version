@@ -1,9 +1,9 @@
 import {DayPictureTile} from "../DayPictureTile/DayPictureTile";
 import './HomeGrid.css';
-import UseNasaOneMonth from "../../hooks/UseNasaOneMonth";
+import UseNasaApi from "../../hooks/UseNasaApi";
 
 export default function HomeGrid() {
-    const newApiCall = UseNasaOneMonth()
+    const newApiCall = UseNasaApi()
 
     return (
         <ul className="gallery">
