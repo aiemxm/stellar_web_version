@@ -2,7 +2,7 @@ import './App.css';
 import './components/Navbar/Navbar';
 import Navbar from "./components/Navbar/Navbar.js" ;
 import {Routes, Route} from "react-router-dom";
-import {Home} from "./components/Home/Home"
+import {Home} from "./pages/Home/Home"
 import {Birthday} from "./components/Birthday/Birthday";
 import DetailView from "./components/DetailView/DetailView";
 import WorkInProgress from "./components/WIP/WorkInProgress";
