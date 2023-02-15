@@ -1,0 +1,20 @@
+.gitHub-link {
+    text-decoration: none;
+}
+
+.customPopup {
+    background: #000;
+}
+
+.popup-texts {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.popup-texts {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-evenly;*/
+    margin-left: 5px;
+}

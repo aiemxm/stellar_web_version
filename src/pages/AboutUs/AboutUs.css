@@ -1,0 +1,17 @@
+.about-main {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.about-main h2 {
+    font-family: "Montserrat Alternates", sans-serif;
+}
+.about-main article {
+    font-family: "Roboto Light", sans-serif;
+    font-weight: lighter;
+}
+
+.text {
+
+}
