@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import './Home.css';
-import HomeGrid from "../HomeGrid/HomeGrid";
+import HomeGrid from "../../components/HomeGrid/HomeGrid";
 import {ThemeContext} from "../../Context/ThemeContext";
 
 export function Home() {
