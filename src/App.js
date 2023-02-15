@@ -8,6 +8,7 @@ import DetailView from "./components/DetailView/DetailView";
 import WorkInProgress from "./components/WIP/WorkInProgress";
 import BtnToggle from "./components/BtnToggle/BtnToggle";
 import ThemeContextProvider from "./Context/ThemeContext";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
                     {/*<Route path="/Birthday" element={<Birthday/>}/>*/}
                     <Route path="/Birthday" element={<WorkInProgress />}/>
                     <Route path="/random" element={<WorkInProgress/>}/>
-                    <Route path="/contact" element={<WorkInProgress/>}/>
+                    <Route path="/contact" element={<AboutUs/>}/>
                 </Routes>
                 <BtnToggle/>
             </ThemeContextProvider>
