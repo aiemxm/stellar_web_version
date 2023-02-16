@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "Elliot",
+    "job": "iOS developer",
+    "location": "Paris",
+    "github": "https://github.com/Harry-KNIGHT",
+    "coordinates": [48.8588897, 2.320041],
+    "picture": ""
+  },
+  {
+    "id": 2,
+    "name": "Maxime",
+    "job": "Web developer",
+    "location": "Toulouse",
+    "github": "https://github.com/aiemxm",
+    "coordinates": [43.6, 1.433333],
+    "picture": "src/assets/images/maxime_profile_pic.jpeg"
+  },
+  {
+    "id": 3,
+    "name": "About us",
+    "job": " We are Elliot and Maxime, two french developers. We created Stellar in order to improve ourselves and share with the world you these beautiful pictures. We hope you will enjoy our work!",
+    "location": "",
+    "github": "",
+    "coordinates": [46.603354, 1.8883335]
+  }
+]
