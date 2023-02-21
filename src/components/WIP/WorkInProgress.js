@@ -1,7 +1,6 @@
 import React from 'react';
 import './WorkInProgress.css'
 import launch from './launch.jpg';
-import {Skeleton} from "@mui/material";
 
 const WorkInProgress = () => {
     return (
