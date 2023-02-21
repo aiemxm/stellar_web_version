@@ -1,66 +1,29 @@
-import {useEffect, useState} from "react";
+import { useState, useRef } from "react";
+import UseNasaApi from "../../hooks/UseNasaApi";
 
-export const Birthday = props => {
+export const Birthday = (props) => {
+  const [birthdayData, setBirthdayData] = useState({});
+  const birthdateInput = useRef(null);
+  let date;
+  const url = `https://apod.ellanan.com/api?date=`;
 
-    const url = `https://apod.ellanan.com/api?date=`;
+  const handleBirthdayInput = () => {
+    fetch(url + birthdateInput.current.value)
+      .then((response) => response.json())
+      .then((data) => setBirthdayData(data))
+      .catch(error => console.log(error))
+  };
 
-    const [birthdayData, setBirthdayData] = useState({});
-    const [initialDate, setInitialDate] = useState('')
-    const [updatedDate, setUpdatedDate] = useState(initialDate)
-    const birthdayInput = document.getElementById('birthdayInput');
+  return (
+    <div className="birthday-main">
+      <input type="date" ref={birthdateInput} />
+      <button type="button" onClick={handleBirthdayInput}>
+        Go
+      </button>
 
-
-    const handleInput = (event) => {
-        setInitialDate(event.target.value);
-        console.log(initialDate)
-    }
-
-    const handleClick = () => {
-        if (initialDate.length === 10) {
-            setUpdatedDate(initialDate);
-        }
-        // fetchData(updatedDate);
-        console.log(updatedDate)
-    }
-    const fetchData = async (date) => {
-        await fetch(url + date)
-            .then(res => {
-                res.json()
-            })
-            .then(data => setBirthdayData(data))
-
-        console.log(birthdayData)
-    }
-
-    function test() {
-        console.log(birthdayInput)
-    }
-
-    useEffect(() => {
-
-        console.log(document.getElementById("birthdayInput").value)
-    }, []);
-
-
-    return (
-        <div>
-            <h1>Enter your date of birth</h1>
-            <input
-                className="birthdayInput"
-                type="date"
-                id="birthdayInput"
-                onChange={handleInput}
-                value="2022-01-02"
-            />
-            <button
-                type="button"
-                onClick={() => console.log(updatedDate)}
-            >
-                Search
-            </button>
-
-            <h3>{birthdayData.title}</h3>
-            <img src={birthdayData.url} alt=""/>
-        </div>
-    );
+      <div className="birthday-picture">
+        <img src={birthdayData.url} alt="" />
+      </div>
+    </div>
+  );
 };

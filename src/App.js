@@ -18,8 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/detail/" element={<DetailView />} />
-          {/*<Route path="/Birthday" element={<Birthday/>}/>*/}
-          <Route path="/Birthday" element={<WorkInProgress />} />
+          <Route path="/Birthday" element={<Birthday />} />
           <Route path="/random" element={<WorkInProgress />} />
           <Route path="/contact" element={<AboutUs />} />
         </Routes>
