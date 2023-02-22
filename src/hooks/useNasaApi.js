@@ -11,7 +11,6 @@ export default function useNasaApi(date, loadOnStart = true) {
   let aMonthAgo = UseFormatDate(getDateForWeeksAgo(new Date()));
   let url = date ? UseSetUrl(date) : UseSetUrl(aMonthAgo, today);
 
-
   useEffect(() => {
     if (loadOnStart) fetchData();
     else setLoading(false);
@@ -23,13 +22,13 @@ export default function useNasaApi(date, loadOnStart = true) {
     return daysAgo;
   }
 
-  const request = () => {
-    fetchData();
+  const request = (date) => {
+    fetchData(date);
   };
 
-  async function fetchData() {
+  async function fetchData(date) {
     setLoading(true);
-    axios(url)
+    axios(date ? UseSetUrl(date) : url)
       .then((response) => {
         setError("");
         setData(response.data);
