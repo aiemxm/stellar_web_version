@@ -1,31 +1,46 @@
-import { useRef } from "react";
+import {useRef, useState} from "react";
 import useNasaApi from "../../hooks/useNasaApi";
 import Loader from "../../components/Loader/Loader";
-import LoadedDetailView from "../../components/LoadedDetailView/LoadedDetailView";
 import YouAreTooOld from "../../components/YouAreTooOld/YouAreTooOld";
-export const Birthday = (props) => {
-  const birthdateInput = useRef("");
-  const handleBirthdayInput = () => request(birthdateInput.current.value);
+import useFormatDate from "../../hooks/useFormatDate";
 
-  const [loading, data, error, request] = useNasaApi("", false);
-  if (loading) return <Loader />;
+export const Birthday = () => {
+    const birthdateInput = useRef("");
+    const [date, setDate] = useState("")
+    const handleBirthdayInput = () => {
+        setDate(birthdateInput.current.value)
+        request(birthdateInput.current.value)
+    };
+        console.log(date)
 
-  if (error !== "") return <p>{error}</p>;
+    const [loading, data, error, request] = useNasaApi("", false);
+    const today = useFormatDate(new Date())
+    if (loading) return <Loader/>;
 
-  return (
-    <div className="birthday-main">
-      <input type="date" ref={birthdateInput} />
-      <button type="button" onClick={handleBirthdayInput}>
-        Go
-      </button>
+    if (error !== "") return <p>{error}</p>;
 
-      {data && birthdateInput ? (
-        <div className="birthday-picture">
-          <img src={data.url} alt="" />
+    return (
+        <div className="birthday-main">
+            <input type="date" ref={birthdateInput}/>
+            <button type="button" onClick={handleBirthdayInput}>
+                Go
+            </button>
+
+            {data && birthdateInput
+
+                ? (
+                    <div className="birthday-picture">
+                        <img src={data.url} alt=""/>
+                    </div>
+                )
+                : <YouAreTooOld/>
+
+
+            }
+
+            {
+                data && birthdateInput ? "true" : "false"
+            }
         </div>
-      ) : (
-        <YouAreTooOld />
-      )}
-    </div>
-  );
+    );
 };
