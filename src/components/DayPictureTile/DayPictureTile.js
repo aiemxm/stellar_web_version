@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React from "react"
 import CardHover from "../CardHover/CardHover";
 
 export const DayPictureTile = props => {

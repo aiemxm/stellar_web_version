@@ -1,25 +1,18 @@
-import React, { useLocation } from "react";
-import UseNasaApi from "../../hooks/UseNasaApi";
-export default function LoadedDetailView() {
-  const location = useLocation();
-  const newApiCall = UseNasaApi(location.state);
-//todo: faire marcher ce composant pour un résultat ultra propre 
+import React from "react";
+
+export default function LoadedDetailView(props) {
   return (
     <div className="detail-main">
-      <h1 className="detail-title">{newApiCall.title}</h1>
-      <img
-        src={newApiCall.hdurl}
-        className="detail-img"
-        alt={newApiCall.title}
-      />
-      {newApiCall.copyright && (
+      <h1 className="detail-title">{props.title}</h1>
+      <img src={props.url} className="detail-img" alt={props.title} />
+      {props.copyright && (
         <p className="detail-copyright">
-          {newApiCall.copyright ? `© ${newApiCall.copyright}` : ""}
+          {props.copyright ? `© ${props.copyright}` : ""}
         </p>
       )}
 
       <div className="detail-explanation-mobile">
-        <p>{newApiCall.explanation}</p>
+        <p>{props.explanation}</p>
       </div>
     </div>
   );
