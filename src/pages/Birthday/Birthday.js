@@ -3,6 +3,10 @@ import useNasaApi from "../../hooks/useNasaApi";
 import Loader from "../../components/Loader/Loader";
 import YouAreTooOld from "../../components/YouAreTooOld/YouAreTooOld";
 import useFormatDate from "../../hooks/useFormatDate";
+import CustomButton from "../../components/CustomButton/CustomButton";
+import "./Birthday.css";
+import BirthdayPicture from "../../components/BirthdayPicture/BirthdayPicture";
+import YouAreFuture from "../../components/YouAreFuture/YouAreFuture";
 
 export const Birthday = () => {
   const birthdateInput = useRef("");
@@ -14,29 +18,36 @@ export const Birthday = () => {
 
   const [loading, data, error, request] = useNasaApi("", false);
   const today = useFormatDate(new Date());
-  if (loading) return <Loader />;
 
   if (error !== "") return <p>{error}</p>;
 
   return (
     <div className="birthday-main">
-      <input type="date" ref={birthdateInput} />
-      <button type="button" onClick={handleBirthdayInput}>
-        recherche
-      </button>
-      {date !== "" ? (
-        date > today ? (
-          "futur"
-        ) : date > "1995-06-15" ? (
-          <div className="birthday-picture">
-            <img src={data.url} alt="" />
-          </div>
+      <div className="inputs">
+        <input type="date" ref={birthdateInput} />
+        <CustomButton action={"Discover"} handler={handleBirthdayInput} />
+      </div>
+      <div>
+        {/* {loading && <Loader />} */}
+        {error !== "" && <p>{error}</p>}
+        {date !== "" ? (
+          date > today ? (
+            <YouAreFuture />
+          ) : date > "1995-06-15" ? (
+            <BirthdayPicture
+              url={data.url}
+              title={data.title}
+              date={data.date}
+            />
+          ) : (
+            <YouAreTooOld />
+          )
         ) : (
-          <YouAreTooOld />
-        )
-      ) : (
-        ""
-      )}
+          <p>What's your birthday picture?</p>
+        )}
+      </div>
     </div>
   );
 };
+//TODO responsive
+//TODO gérer les media types

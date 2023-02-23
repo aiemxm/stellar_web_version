@@ -1,3 +1,43 @@
-.birthday-main{
-    z-index: 1000000000;
+.birthday-main {
+  z-index: 1000000000;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  position: absolute;
+  margin-top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.birthday-picture {
+  display: inline-block;
+  position: relative;
+  top: 180px;
+  justify-content: left;
+}
+
+.birthday-picture img {
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+}
+
+.birthday-picture h4 {
+  font-family: "Montserrat", serif;
+  text-align: left;
+}
+.birthday-picture h6 {
+  text-align-last: left;
+  color: #bbb;
+  font-family: sans-serif;
+}
+
+.birthday-main:nth-child(2) {
+  font-family: sans-serif;
+}
+
+.birthday-main:nth-child(2) p {
+  padding-top: 10px;
 }
