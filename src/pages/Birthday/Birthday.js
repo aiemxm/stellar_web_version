@@ -18,7 +18,7 @@ export const Birthday = () => {
 
   const [loading, data, error, request] = useNasaApi("", false);
   const today = useFormatDate(new Date());
-
+  console.log(data.url);
   if (error !== "") return <p>{error}</p>;
 
   return (
@@ -28,13 +28,14 @@ export const Birthday = () => {
         <CustomButton action={"Discover"} handler={handleBirthdayInput} />
       </div>
       <div>
-        {/* {loading && <Loader />} */}
+        {loading && <Loader />}
         {error !== "" && <p>{error}</p>}
         {date !== "" ? (
           date > today ? (
             <YouAreFuture />
           ) : date > "1995-06-15" ? (
             <BirthdayPicture
+              mediaType={data.media_type}
               url={data.url}
               title={data.title}
               date={data.date}
@@ -50,4 +51,3 @@ export const Birthday = () => {
   );
 };
 //TODO responsive
-//TODO gérer les media types
