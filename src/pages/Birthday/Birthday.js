@@ -18,7 +18,6 @@ export const Birthday = () => {
 
   const [loading, data, error, request] = useNasaApi("", false);
   const today = useFormatDate(new Date());
-  console.log(data.url);
   if (error !== "") return <p>{error}</p>;
 
   return (
@@ -50,4 +49,3 @@ export const Birthday = () => {
     </div>
   );
 };
-//TODO responsive
