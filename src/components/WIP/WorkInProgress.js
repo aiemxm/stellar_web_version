@@ -1,25 +1,17 @@
-import React from 'react';
-import './WorkInProgress.css'
-import launch from './launch.jpg';
+import React from "react";
+import "./WorkInProgress.css";
+import launch from "./launch.jpg";
 
 const WorkInProgress = () => {
-    return (
-        <div className="wip-container">
+  return (
+    <div className="wip-container">
+      <div className="wip-main">
+        <h1 className="wip-title">Coming soon</h1>
 
-            <div className="wip-main">
-
-
-                <h1 className="wip-title">Coming soon</h1>
-
-
-                <img src={launch} className="wip-img" alt="page coming soon"/>
-
-
-            </div>
-
-        </div>
-
-    );
+        <img src={launch} className="wip-img" alt="page coming soon" />
+      </div>
+    </div>
+  );
 };
 
 export default WorkInProgress;

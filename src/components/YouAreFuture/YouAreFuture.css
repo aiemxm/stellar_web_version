@@ -1,0 +1,31 @@
+.future-main {
+  position: absolute;
+  top: 260px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* width: 400px; */
+}
+
+.future-main img {
+  width: 600px;
+  height: 600px;
+  object-fit: cover;
+}
+
+.future-main::after {
+  content: "You are in the future, my friend";
+  width: 60%;
+  font-family: sans-serif;
+  font-size: 25px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@media (max-width: 500px) {
+  .future-main img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+  }
+}
