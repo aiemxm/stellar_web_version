@@ -12,6 +12,7 @@ export default function useNasaApi(date, loadOnStart = true) {
   let url = date ? UseSetUrl(date) : UseSetUrl(aMonthAgo, today);
 
   useEffect(() => {
+    console.log(date);
     if (loadOnStart) fetchData();
     else setLoading(false);
   }, []);
@@ -22,9 +23,7 @@ export default function useNasaApi(date, loadOnStart = true) {
     return daysAgo;
   }
 
-  const request = (date) => {
-    fetchData(date);
-  };
+  const request = (date) => fetchData(date);
 
   async function fetchData(date) {
     setLoading(true);
